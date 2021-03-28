@@ -1,8 +1,8 @@
 package generators;
 
-public interface Generator<T> {
+public interface Generator {
 
-    void generateParams(int code);
+    String generateParams(int code);
 
-    T buildResponse();
+    String buildResponse();
 }

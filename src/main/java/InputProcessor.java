@@ -1,11 +1,5 @@
-import generators.AppearanceGenerator;
-import generators.FioGenerator;
-import generators.PhoneGenerator;
-import generators.PhysGenerator;
+import generators.*;
 import person.Person;
-import person.Phone;
-import person.Physical;
-import person.appearance.Appearance;
 
 public class InputProcessor {
 
@@ -18,19 +12,21 @@ public class InputProcessor {
 
             final FioGenerator fioGenerator = new FioGenerator();
             fioGenerator.generateParams(intCode);
-            final String lastName = fioGenerator.getLastName();
-            final String firstName = fioGenerator.getFirstName();
-            final String middleName = fioGenerator.getMiddleName();
+            final String name = fioGenerator.buildResponse();
 
             final PhysGenerator physGenerator = new PhysGenerator();
             physGenerator.generateParams(intCode);
-            final Physical physical = physGenerator.buildResponse();
+            final String physical = physGenerator.buildResponse();
 
-            final AppearanceGenerator appearanceGenerator = new AppearanceGenerator();
-            appearanceGenerator.generateParams(intCode);
-            final Appearance appearance = appearanceGenerator.buildResponse();
+            final HairGenerator hairGenerator = new HairGenerator();
+            hairGenerator.generateParams(intCode);
+            final String appearance = hairGenerator.buildResponse();
 
-            Phone phone = null;
+            final EyesGenerator eyesGenerator = new EyesGenerator();
+            eyesGenerator.generateParams(intCode);
+            final String eyes = eyesGenerator.buildResponse();
+
+            String phone = null;
             // добавляем телефон, только если введённый код не палиндром
             if (!input.equals(new StringBuilder(input).reverse().toString())) {
                 final PhoneGenerator phoneGenerator = new PhoneGenerator();
@@ -39,10 +35,12 @@ public class InputProcessor {
             }
 
             result = new Person(input,
-                    lastName, firstName, middleName,
+                    name,
                     physical,
                     appearance,
-                    phone).toString();
+                    eyes,
+                    phone
+                    ).toString();
         } else {
             result = "Неверный ввод.";
         }
