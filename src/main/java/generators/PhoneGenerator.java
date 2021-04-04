@@ -10,6 +10,7 @@ public class PhoneGenerator implements Generator {
     /**
      * Номер телефона генерируется следующим образом:
      * +79[сумма цифр в коде][3 случайных числа][код].
+     * @param code код для генерации
      * @return
      */
 
@@ -18,7 +19,7 @@ public class PhoneGenerator implements Generator {
                 + String.format("%02d", MyMath.getDigitsSum(code))
                 + String.format("%03d", new Random().nextInt(1000))
                 + String.format("%04d", code);
-        return null;
+        return number;
     }
 
   @Override

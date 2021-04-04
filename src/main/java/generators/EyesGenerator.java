@@ -7,8 +7,8 @@ public class EyesGenerator implements Generator {
     /**
      * Внешность генерируется по третьей цифре кода (i):
      * Глаза: по индексу i/2 (=0..4)
+     * @return
      */
-
     @Override
     public final String generateParams(final int code) {
         final int i = code % 100 / 10;
@@ -38,5 +38,6 @@ public class EyesGenerator implements Generator {
         public final String buildResponse() {
             return String.format("Глаза:\t\t%1$s",  eyes);
         }
+
 }
 
