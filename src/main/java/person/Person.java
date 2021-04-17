@@ -30,7 +30,7 @@ public class Person {
     public final String toString() {
         final StringBuilder sb = new StringBuilder()
                 .append(id).append("\n")
-                .append(String.format(name)).append("\n")
+                .append(name).append("\n")
                 .append(phys).append("\n")
                 .append(eyes).append("\n")
                 .append(appearance).append("\n");

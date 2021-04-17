@@ -10,9 +10,8 @@ public class InputProcessor {
             // Создаём Person
             final int intCode = Integer.parseInt(input);
 
-            final FioGenerator fioGenerator = new FioGenerator();
-            fioGenerator.generateParams(intCode);
-            final String name = fioGenerator.buildResponse();
+            final FioGenerator fioGenerator = new FioGenerator(null, null, null);
+            FioGenerator fio = fioGenerator.generateParams(intCode);
 
             final PhysGenerator physGenerator = new PhysGenerator();
             physGenerator.generateParams(intCode);
@@ -35,7 +34,7 @@ public class InputProcessor {
             }
 
             result = new Person(input,
-                    name,
+                    fio.printFio(fio),
                     physical,
                     appearance,
                     eyes,
