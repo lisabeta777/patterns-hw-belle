@@ -1,5 +1,6 @@
 import generators.*;
 import person.Person;
+import person.PersonBuilder;
 
 public class InputProcessor {
 
@@ -33,13 +34,20 @@ public class InputProcessor {
                 phone = phoneGenerator.buildResponse();
             }
 
-            result = new Person(input,
-                    fio.printFio(fio),
-                    physical,
-                    appearance,
-                    eyes,
-                    phone
-                    ).toString();
+            PersonBuilder personBuilder = new PersonBuilder(input);
+            personBuilder.withName(fio.printFio(fio));
+            personBuilder.withPhys(physical);
+            personBuilder.withEyes(eyes);
+            personBuilder.withAppearance(appearance);
+            if (phone != null) {
+            personBuilder.withPhone(phone);
+             } else {
+                personBuilder.withPhone("Телефона нет");
+            }
+            Person person = personBuilder.build();
+
+            result = person.toString();
+
         } else {
             result = "Неверный ввод.";
         }
